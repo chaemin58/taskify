@@ -1,9 +1,62 @@
 import type { NextConfig } from "next";
 
+interface WebpackRule {
+  test?: RegExp;
+  issuer?: unknown;
+  resourceQuery?: {
+    not?: RegExp[];
+  };
+  exclude?: RegExp;
+  [key: string]: unknown;
+}
+
 const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
-  reactStrictMode: false,
+  webpack(config) {
+    const fileLoaderRule = config.module.rules.find(
+      (rule: WebpackRule | "...") =>
+        rule !== "..." && rule.test instanceof RegExp && rule.test.test(".svg")
+    ) as WebpackRule | undefined;
+
+    if (!fileLoaderRule) {
+      return config;
+    }
+
+    config.module.rules.push(
+      {
+        ...fileLoaderRule,
+        test: /\.svg$/i,
+        resourceQuery: /url/,
+      },
+      {
+        test: /\.svg$/i,
+        issuer: fileLoaderRule.issuer,
+        resourceQuery: {
+          not: [
+            ...((fileLoaderRule.resourceQuery as { not?: RegExp[] })?.not ??
+              []),
+            /url/,
+          ],
+        },
+        use: ["@svgr/webpack"],
+      }
+    );
+
+    fileLoaderRule.exclude = /\.svg$/i;
+
+    return config;
+  },
+
+  turbopack: {
+    rules: {
+      "*.svg": {
+        loaders: ["@svgr/webpack"],
+        as: "*.js",
+      },
+    },
+  },
+  reactStrictMode: true,
   images: {
     remotePatterns: [
       {
@@ -14,7 +67,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-
 };
 
 export default nextConfig;
