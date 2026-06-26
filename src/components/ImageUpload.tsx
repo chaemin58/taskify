@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { ChangeEvent, MouseEvent, useEffect, useRef, useState } from "react";
 
-import imageIcon from "@/assets/common/ic-image.svg";
-import iconX from "@/assets/common/ic-x-circle.svg";
+import ImageIcon from "@/assets/common/ic-image.svg";
+import IconXCircle from "@/assets/common/ic-x-circle.svg";
 
 interface ImageUploaderProps {
   onImageChange?: (file: File | null) => void;
@@ -24,6 +24,7 @@ export function ImageUpload({
 
   /* initialImageUrl 변경 대응 */
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setPreviewUrl(initialImageUrl || null);
   }, [initialImageUrl]);
 
@@ -100,12 +101,15 @@ export function ImageUpload({
               onClick={handleReset}
               className="absolute -top-3 -right-3 z-50 h-7 w-7 hover:scale-110"
             >
-              <Image src={iconX} alt="삭제" fill />
+              <IconXCircle
+                className="absolute inset-0 h-full w-full"
+                aria-label="삭제"
+              />
             </button>
           </div>
         ) : (
           <div className="flex flex-col items-center gap-1">
-            <Image src={imageIcon} alt="이미지" width={32} height={32} />
+            <ImageIcon width={32} height={32} aria-label="이미지" />
 
             <span className="text-[16px] font-semibold text-gray-400">
               + image upload

@@ -1,19 +1,22 @@
-import Image from "next/image";
 import { useRouter } from "next/navigation";
+import * as React from "react";
 
-import icCrown from "@/assets/common/ic-crown.svg";
-import colorChipsBlue from "@/assets/dashboard/colorchips-blue.svg";
-import colorChipsGreen from "@/assets/dashboard/colorchips-green.svg";
-import colorChipsOrange from "@/assets/dashboard/colorchips-orange.svg";
-import colorChipsRed from "@/assets/dashboard/colorchips-red.svg";
-import colorChipsYellow from "@/assets/dashboard/colorchips-yellow.svg";
+import IcCrown from "@/assets/common/ic-crown.svg";
+import ColorChipsBlue from "@/assets/dashboard/colorchips-blue.svg";
+import ColorChipsGreen from "@/assets/dashboard/colorchips-green.svg";
+import ColorChipsOrange from "@/assets/dashboard/colorchips-orange.svg";
+import ColorChipsRed from "@/assets/dashboard/colorchips-red.svg";
+import ColorChipsYellow from "@/assets/dashboard/colorchips-yellow.svg";
 
-const CHIP_IMAGE_MAP: Record<string, string> = {
-  "#206e4e": colorChipsGreen,
-  "#ae2e24": colorChipsRed,
-  "#1458bc": colorChipsBlue,
-  "#bd8c00": colorChipsYellow,
-  "#9f4b00": colorChipsOrange,
+const CHIP_COMPONENT_MAP: Record<
+  string,
+  React.FunctionComponent<React.SVGProps<SVGSVGElement>>
+> = {
+  "#206e4e": ColorChipsGreen,
+  "#ae2e24": ColorChipsRed,
+  "#1458bc": ColorChipsBlue,
+  "#bd8c00": ColorChipsYellow,
+  "#9f4b00": ColorChipsOrange,
 };
 
 interface SideButtonProps {
@@ -24,7 +27,7 @@ interface SideButtonProps {
 }
 
 export function SideButton({ id, title, color, createdByMe }: SideButtonProps) {
-  const chipSrc = CHIP_IMAGE_MAP[color] || colorChipsGreen;
+  const ChipComponent = CHIP_COMPONENT_MAP[color] ?? ColorChipsGreen;
   const router = useRouter();
   return (
     <div
@@ -32,10 +35,10 @@ export function SideButton({ id, title, color, createdByMe }: SideButtonProps) {
       className="flex cursor-pointer items-center justify-between rounded-xl px-2.5 py-4 transition-colors duration-300 ease-in-out hover:bg-[#2C2B30]"
     >
       <div className="flex items-center justify-center gap-2">
-        <Image height={24} width={24} src={chipSrc} alt={`${color} 컬러칩`} />
+        <ChipComponent width={24} height={24} aria-label={`${color} 컬러칩`} />
         <span className="text-white">{title}</span>
       </div>
-      {createdByMe && <Image className="h-6" src={icCrown} alt="왕관 아이콘" />}
+      {createdByMe && <IcCrown className="h-6 w-6" aria-label="왕관 아이콘" />}
     </div>
   );
 }

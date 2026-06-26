@@ -23,13 +23,13 @@ export function Checkbox({
         checked={checked}
         onChange={handleChange}
       />
-      <label
-        htmlFor="checkbox"
-        className="mr-2 block h-6 w-6 cursor-pointer bg-contain bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url('${checked ? CheckboxChecked.src : CheckboxUnchecked.src}')`,
-        }}
-      ></label>
+      <label htmlFor="checkbox" className="mr-2 block h-6 w-6 cursor-pointer">
+        {checked ? (
+          <CheckboxChecked className="h-6 w-6" aria-label="체크됨" />
+        ) : (
+          <CheckboxUnchecked className="h-6 w-6" aria-label="체크 안됨" />
+        )}
+      </label>
       <label htmlFor="checkbox" className="text-gray-300">
         {description}
       </label>

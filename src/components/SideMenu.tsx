@@ -1,7 +1,6 @@
 "use client";
-import Image from "next/image";
 
-import logoImg from "@/assets/common/logo.svg";
+import Logo from "@/assets/common/logo.svg";
 import { useSideMenu } from "@/contexts/SideMenuContext";
 
 import { DashboardAddButton } from "./DashboardAddButton";
@@ -34,7 +33,7 @@ export function SideMenu() {
         className={`bg-black-900 max-md:duration-00 fixed top-0 left-0 z-30 flex h-screen w-[clamp(220px,20vw,340px)] flex-col pt-2.5 transition-transform md:relative md:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
         <div className="flex h-11 items-start px-4 text-2xl text-gray-100">
-          <Image src={logoImg} height={40} width={156} alt="로고 이미지" />
+          <Logo height={40} width={156} aria-label="로고 이미지" />
         </div>
         <div className="flex flex-1 flex-col overflow-hidden px-6 max-lg:px-2.5">
           <div className="flex min-h-0 flex-1 flex-col">

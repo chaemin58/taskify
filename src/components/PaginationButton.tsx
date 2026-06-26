@@ -1,40 +1,40 @@
-import Image from "next/image";
-
-import leftbtn from "@/assets/mydashboard/ic_left_arrow.svg";
-import rightbtn from "@/assets/mydashboard/ic_right_arrow.svg";
+import Leftbtn from "@/assets/mydashboard/ic_left_arrow.svg";
+import Rightbtn from "@/assets/mydashboard/ic_right_arrow.svg";
 
 interface PaginationButtonProp {
   current: number;
   total: number;
-  handleClickPrev: () => void;
-  handleClickNext: () => void;
+  onClickPrev: () => void;
+  onClickNext: () => void;
 }
 
 export function PaginationButton({
   current,
   total,
-  handleClickPrev,
-  handleClickNext,
+  onClickPrev,
+  onClickNext,
 }: PaginationButtonProp) {
   return (
     <div className="ml-auto flex gap-5 pt-5">
       <div>
         {" "}
-        {current + 1} of {total}
+        {current} of {total}
       </div>
       <button
         className="disabled:opacity-30"
-        onClick={handleClickPrev}
-        disabled={current === 0}
+        // eslint-disable-next-line react/jsx-handler-names
+        onClick={onClickPrev}
+        disabled={current === 1}
       >
-        <Image src={leftbtn} alt="left" className="cursor-pointer" />
+        <Leftbtn />
       </button>
       <button
         className="disabled:opacity-30"
-        onClick={handleClickNext}
+        // eslint-disable-next-line react/jsx-handler-names
+        onClick={onClickNext}
         disabled={current === total - 1}
       >
-        <Image src={rightbtn} alt="right" className="cursor-pointer" />
+        <Rightbtn />
       </button>
     </div>
   );
