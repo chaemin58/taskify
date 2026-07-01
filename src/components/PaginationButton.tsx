@@ -21,18 +21,20 @@ export function PaginationButton({
         {current} of {total}
       </div>
       <button
-        className="disabled:opacity-30"
-        // eslint-disable-next-line react/jsx-handler-names
-        onClick={onClickPrev}
+        className="cursor-pointer disabled:opacity-30"
+        onClick={() => {
+          onClickPrev();
+        }}
         disabled={current === 1}
       >
         <Leftbtn />
       </button>
       <button
-        className="disabled:opacity-30"
-        // eslint-disable-next-line react/jsx-handler-names
-        onClick={onClickNext}
-        disabled={current === total - 1}
+        className="cursor-pointer disabled:opacity-30"
+        onClick={() => {
+          onClickNext();
+        }}
+        disabled={current === total}
       >
         <Rightbtn />
       </button>
