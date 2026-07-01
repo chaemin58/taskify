@@ -1,11 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { useRouter } from "next/navigation"; // [추가] 페이지 이동을 위한 useRouter 훅
 import { useRef, useState } from "react";
 
-import plusicon from "@/assets/dashboard/ic-plusbtn.svg";
-import settingicon from "@/assets/dashboard/ic-setting.svg";
+import Plusicon from "@/assets/dashboard/ic-plusbtn.svg";
+import Settingicon from "@/assets/dashboard/ic-setting.svg";
 import { PopDoverMenu } from "@/components/PopDoverMenu";
 import { useClickOutside } from "@/hooks/useClickOutside";
 
@@ -64,13 +63,9 @@ export function ColumnListHeader({
       </div>
       <div className="flex gap-5">
         {/* [수정] 단순 아이콘에서 클릭 이벤트(handleAddTask)와 호버 애니메이션 추가 */}
-        <Image
-          src={plusicon}
-          alt="add"
-          height={20}
-          width={20}
-          onClick={handleAddTask}
+        <Plusicon
           className="cursor-pointer transition-transform hover:scale-110"
+          onClick={handleAddTask}
         />
         {/* [수정] 불필요한 내부 핸들러(handleColumnEdit) 대신 props로 받은 onSettingClick 바로 연결 */}
         {/* 호버 시 90도 회전하는 시각적 피드백 추가 */}
@@ -78,13 +73,9 @@ export function ColumnListHeader({
           className="relative flex items-center justify-center"
           ref={containerRef}
         >
-          <Image
-            src={settingicon}
-            alt="setting"
-            onClick={handleSettingClick}
-            height={20}
-            width={20}
+          <Settingicon
             className="cursor-pointer transition-transform hover:rotate-90"
+            onClick={handleSettingClick}
           />
           {isOpen && (
             <PopDoverMenu

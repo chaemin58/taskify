@@ -1,9 +1,8 @@
 "use client";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 
-import icMore from "@/assets/common/ic-more.svg";
+import IcMore from "@/assets/common/ic-more.svg";
 import { useClickOutside } from "@/hooks/useClickOutside";
 
 import { PopDoverMenu } from "../PopDoverMenu";
@@ -46,7 +45,7 @@ export function KebabButton({
         onClick={handleDropdown}
         className="h-6 w-6 transition-transform hover:scale-110 active:opacity-70"
       >
-        <Image src={icMore} height={24} width={24} alt="더보기 아이콘" />
+        <IcMore height={24} width={24} aria-label="더보기 아이콘" />
       </button>
       {isOpen && <PopDoverMenu onEdit={handleEdit} onDelete={handleDelete} />}
     </div>

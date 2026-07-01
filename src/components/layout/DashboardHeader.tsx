@@ -1,12 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { useMemo } from "react";
 
-import iconSettings from "@/assets/common/ic-setting.svg";
-import iconShare from "@/assets/common/ic-user-plus.svg";
-import icSideMenu from "@/assets/ic-sidemenu.svg";
+import IconSettings from "@/assets/common/ic-setting.svg";
+import IconShare from "@/assets/common/ic-user-plus.svg";
+import IcSideMenu from "@/assets/ic-sidemenu.svg";
 import { useSideMenu } from "@/contexts/SideMenuContext";
 import { useMemberListQuery } from "@/hooks/useCards";
 
@@ -69,7 +68,7 @@ export function DashboardHeader() {
   return (
     <header className="border-black-800 flex h-12.5 w-full items-center justify-between border-b-2 bg-[#1B1A1F] px-3 md:h-15 md:justify-end md:px-6">
       <button onClick={handleOpenSideMenu} className="p-2.5 md:hidden">
-        <Image src={icSideMenu} alt="메뉴" height={20} width={20} />
+        <IcSideMenu width={20} height={20} aria-label="메뉴" />
       </button>
 
       <div className="flex items-center gap-6 md:gap-8.5 lg:gap-12.5">
@@ -102,12 +101,11 @@ export function DashboardHeader() {
             onClick={() => router.push(`/dashboard/${dashboardId}/edit`)}
             className="group flex items-center gap-2 text-gray-300 hover:text-white"
           >
-            <Image
-              src={iconSettings}
-              alt="setting"
+            <IconSettings
               width={16}
               height={16}
               className="opacity-70 group-hover:opacity-100"
+              aria-label="setting"
             />
             <span className="hidden text-sm font-medium md:inline">관리</span>
           </button>
@@ -115,12 +113,11 @@ export function DashboardHeader() {
             onClick={() => router.push(`/dashboard/${dashboardId}/invite`)}
             className="group flex items-center gap-2 text-gray-300 hover:text-white"
           >
-            <Image
-              src={iconShare}
-              alt="share"
+            <IconShare
               width={16}
               height={16}
               className="opacity-70 group-hover:opacity-100"
+              aria-label="share"
             />
             <span className="hidden text-sm font-medium md:inline">공유</span>
           </button>

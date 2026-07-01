@@ -1,12 +1,16 @@
-// images.d.ts
+/* eslint-disable import-x/no-default-export */
 declare module "*.svg" {
-  export const content: string;
+  import * as React from "react";
+  const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  export default ReactComponent;
 }
 
 declare module "*.png" {
-  export const content: string;
+  const content: string;
+  export default content;
 }
 
 declare module "*.jpg" {
-  export const content: string;
+  const content: string;
+  export default content;
 }

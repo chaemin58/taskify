@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 
-import iconChevronDown from "@/assets/common/ic-chevron-down.svg";
+import IconChevronDown from "@/assets/common/ic-chevron-down.svg";
+
 import { ProfileImage } from "./profile/Profile";
 
 export interface DropdownOption {
@@ -82,7 +82,7 @@ export function Dropdown({
             isOpen ? "rotate-180" : ""
           }`}
         >
-          <Image src={iconChevronDown} alt="열기" width={24} height={24} />
+          <IconChevronDown width={24} height={24} aria-label="열기" />
         </button>
       </div>
 

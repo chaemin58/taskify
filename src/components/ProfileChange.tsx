@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 
-import imageIcon from "@/assets/common/ic-image.svg";
+import ImageIcon from "@/assets/common/ic-image.svg";
 import { cn } from "@/lib/cn";
 
 interface ProfileChangeProps {
@@ -42,16 +42,20 @@ export function ProfileChange({
     <div className="flex items-center gap-5">
       <div
         className={cn(
-          "h-30 w-30 shrink-0 overflow-hidden rounded-full bg-cover bg-center bg-no-repeat max-md:max-h-27.5 max-md:max-w-27.5",
-          !currentImageUrl && "border-none"
+          "h-30 w-30 shrink-0 overflow-hidden rounded-full max-md:max-h-27.5 max-md:max-w-27.5"
         )}
-        style={{
-          backgroundImage:
-            currentImageUrl && currentImageUrl !== ""
-              ? `url('${currentImageUrl}')`
-              : `url('${imageIcon.src}')`,
-        }}
-      />
+      >
+        {currentImageUrl && currentImageUrl !== "" ? (
+          <div
+            className="h-full w-full bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url('${currentImageUrl}')` }}
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center rounded-full bg-gray-900">
+            <ImageIcon className="h-10 w-10 text-gray-500" aria-hidden="true" />
+          </div>
+        )}
+      </div>
       <div className="flex items-center gap-3">
         <input
           type="file"
