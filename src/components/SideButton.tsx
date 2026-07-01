@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import * as React from "react";
 
-import IcCrown from "@/assets/common/ic-crown.svg";
+import CrownIcon from "@/assets/crown_icon.svg";
 import ColorChipsBlue from "@/assets/dashboard/colorchips-blue.svg";
 import ColorChipsGreen from "@/assets/dashboard/colorchips-green.svg";
 import ColorChipsOrange from "@/assets/dashboard/colorchips-orange.svg";
@@ -38,7 +38,7 @@ export function SideButton({ id, title, color, createdByMe }: SideButtonProps) {
         <ChipComponent width={24} height={24} aria-label={`${color} 컬러칩`} />
         <span className="text-white">{title}</span>
       </div>
-      {createdByMe && <IcCrown className="h-6 w-6" aria-label="왕관 아이콘" />}
+      {createdByMe && <CrownIcon className="h-6 w-6" />}
     </div>
   );
 }
