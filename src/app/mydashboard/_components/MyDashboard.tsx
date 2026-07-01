@@ -1,13 +1,16 @@
 "use client";
 
-import { getDashboardList } from "@/api/data";
-import { useState } from "react";
-import { Emptydashboard } from "./Emptydashboard";
-import { DashboardCard } from "./DashboardCard";
-import { PaginationButton } from "@/components/PaginationButton";
-import { useItemsPerPage } from "../hooks/useItemsPerPage";
-import { AddDashboard } from "./AddDashboard";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import { useState } from "react";
+
+import { getDashboardList } from "@/api/data";
+import { PaginationButton } from "@/components/PaginationButton";
+
+import { useItemsPerPage } from "../hooks/useItemsPerPage";
+
+import { AddDashboard } from "./AddDashboard";
+import { DashboardCard } from "./DashboardCard";
+import { Emptydashboard } from "./Emptydashboard";
 
 const SIZE = 10;
 
@@ -27,13 +30,10 @@ export function MyDashboard() {
       initialPageParam: 1,
       //다음 페이지 번호가 뭔지, fetchNextPage하면 pageParam으로 뭘 넘길지 정한다.
       getNextPageParam: (lastPage, allPages) => {
-        console.log("lastPage 구조:", lastPage); // ← 이거
         const loaded = allPages.reduce(
           (sum, p) => sum + p.dashboards.length,
           0
         );
-        console.log("loaded:", loaded, "totalCount:", lastPage.totalCount);
-
         // 아직 서버에 남은 게 있으면 다음 페이지 번호를, 없으면 undefined
         return loaded < lastPage.totalCount ? allPages.length + 1 : undefined;
       },
@@ -48,10 +48,7 @@ export function MyDashboard() {
   const totalPage = Math.ceil((total + 1) / showItem);
 
   const handleClickNext = () => {
-    if (
-      (currentPage + 1) * showItem - 1 > dashboardList.length &&
-      dashboardList.length < total
-    ) {
+    if (hasNextPage) {
       fetchNextPage();
     }
     setCurrentPage((prev) => prev + 1);
