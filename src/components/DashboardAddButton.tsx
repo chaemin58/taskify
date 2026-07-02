@@ -9,7 +9,7 @@ export function DashboardAddButton() {
   return (
     <div
       onClick={() => router.push("/new-dashboard")}
-      className="flex cursor-pointer items-center justify-between rounded-xl px-3.5 pt-3 pb-2.5"
+      className="flex cursor-pointer items-center justify-between rounded-xl px-3.5 py-4 transition-colors duration-300 ease-in-out hover:bg-[#2C2B30]"
     >
       <span className="text-base font-bold text-gray-400">대시보드 추가</span>
       <IcPlus aria-label="대시보드 추가 아이콘" />
