@@ -78,6 +78,7 @@ export function MyDashboard() {
               title={dashboard.title}
               key={dashboard.id}
               dashboardId={dashboard.id}
+              color={dashboard.color}
             />
           ))}
         </div>

@@ -1,6 +1,6 @@
-export function InvitionHeader() {
+export function InvitedHeader() {
   return (
-    <div className="flex h-11.75 justify-between text-[16px]">
+    <div className="hidden h-11.75 items-center justify-between border-b border-[#333236] md:flex">
       <div className="w-75">이름</div>
       <div className="flex gap-25">
         <span className="w-28">초대자</span>
