@@ -1,12 +1,12 @@
 "use client";
 
 import Logo from "@/assets/common/logo.svg";
+import { DashboardAddButton } from "@/components/DashboardAddButton";
+import { SideHomeButton } from "@/components/SideBar/SideHomeButton";
+import { UserAccount } from "@/components/UserAccount";
 import { useSideMenu } from "@/contexts/SideMenuContext";
 
-import { DashboardAddButton } from "./DashboardAddButton";
 import { SideDashboardList } from "./SideDashboardList";
-import { SideHomeButton } from "./SideHomeButton";
-import { UserAccount } from "./UserAccount";
 
 export interface Dashboard {
   id: number;

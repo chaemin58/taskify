@@ -1,5 +1,5 @@
 import { MyDashboardHeader } from "@/components/layout/MyDashboardHeader";
-import { SideMenu } from "@/components/SideMenu";
+import { SideMenu } from "@/components/SideBar/SideMenu";
 import { SideMenuProvider } from "@/contexts/SideMenuContext";
 
 interface MyDashboardLayoutProps {

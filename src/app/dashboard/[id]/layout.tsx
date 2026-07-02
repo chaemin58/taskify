@@ -3,7 +3,7 @@
 import { useSelectedLayoutSegment } from "next/navigation";
 
 import { DashboardHeader } from "@/components/layout/DashboardHeader";
-import { SideMenu } from "@/components/SideMenu";
+import { SideMenu } from "@/components/SideBar/SideMenu";
 import { SideMenuProvider } from "@/contexts/SideMenuContext";
 
 interface DashboardLayoutProps {
