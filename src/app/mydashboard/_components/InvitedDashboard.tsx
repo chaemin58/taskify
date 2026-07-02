@@ -1,6 +1,6 @@
 "use client";
 
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { keepPreviousData, useInfiniteQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { useInView } from "react-intersection-observer";
 
@@ -35,6 +35,7 @@ export function InvitedDashboard() {
       }),
     initialPageParam: 0,
     getNextPageParam: (lastPage) => lastPage.cursorId ?? undefined,
+    placeholderData: keepPreviousData,
   });
 
   const { ref } = useInView({
