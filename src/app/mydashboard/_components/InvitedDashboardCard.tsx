@@ -18,7 +18,7 @@ export function InvitedDashboardCard({
   onClickAccept,
 }: InvitedDashboardCardProps) {
   return (
-    <div className="flex flex-col justify-between gap-1 px-2.5 pt-4 pb-4.5 md:flex-row">
+    <div className="border-black-600 flex flex-col justify-between gap-1 border-b px-2.5 pt-4 pb-4.5 md:flex-row md:items-center">
       <div className="w-75">{title}</div>
       <div className="flex items-center justify-between">
         <div className="w-50">
