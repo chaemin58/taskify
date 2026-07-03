@@ -56,7 +56,6 @@ export function AccountSetting() {
         throw new Error(updateResult.message || "정보 수정 실패");
     },
     onSuccess: () => {
-      // ✅ 이 한 줄이 UserAccount도 자동 갱신
       queryClient.invalidateQueries({ queryKey: ["myInfo"] });
       router.back();
     },

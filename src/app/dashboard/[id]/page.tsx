@@ -10,6 +10,7 @@ import { HashtagIcon } from "@/assets/dashboard/ic-colorchips";
 import { ColumnAdd } from "./_components/ColumnAdd";
 import { ColumnList } from "./_components/ColumnList";
 import { DashboardSkeletonUI } from "./_components/DashboardSkeletonUII";
+import { DashboardTag } from "@/components/DashboardTag/DashboardTag";
 
 export interface ColumnList {
   id: number;
@@ -66,8 +67,7 @@ export default function Dashboard({ params }: DashboardPageProps) {
   return (
     <div className="text-gray-100 max-md:px-4 lg:px-12.5">
       <div className="flex items-center gap-1 pt-6 pb-3.5 max-lg:mx-7.5 max-md:mx-5">
-        <HashtagIcon color={dashboardDetail.color} />
-        <h1 className="text-2xl font-bold">{dashboardDetail?.title}</h1>
+        <DashboardTag title={dashboardDetail.title} color={dashboardDetail.color} className="text-2xl font-bold"/>
       </div>
       {/* 모바일과 태블릿 환경 전용 UI */}
       <div className="flex w-full items-center max-lg:mx-7.5 max-md:mx-5 lg:hidden [&::-webkit-scrollbar]:hidden">
