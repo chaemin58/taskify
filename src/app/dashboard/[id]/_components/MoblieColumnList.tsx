@@ -2,12 +2,10 @@
 
 import { useState } from "react";
 
-import { Button } from "@/components/Button";
 import { ColumnPlusButton } from "./ColumnPlusButton";
 import { ColumnList } from "./ColumnList";
 import { ColumnList as Column } from "../page";
 import { ColumnButtonList } from "./ColumnButtonList";
-import { useRouter } from "next/navigation";
 
 interface MoblieColumnListProps {
   columnList: Column[];
