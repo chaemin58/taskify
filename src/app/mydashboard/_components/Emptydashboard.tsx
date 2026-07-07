@@ -11,17 +11,7 @@ interface DashboardProps {
 export function Emptydashboard({ dashtype }: DashboardProps) {
   return (
     <div className="bg-black-800 flex h-fit w-full flex-col items-center justify-center gap-1 rounded-2xl border border-gray-700 py-5 md:gap-2 md:px-10 lg:gap-2.5 lg:py-10">
-      {dashtype === "my" ? (
-        <ChartIcon
-          className="h-15 w-15 md:h-20 md:w-20 lg:h-25 lg:w-25"
-          aria-label="chartIcon"
-        />
-      ) : (
-        <MailIcon
-          className="h-20.25 w-11.75 md:h-20 md:w-20 lg:h-25 lg:w-25"
-          aria-label="mailIcon"
-        />
-      )}
+      {dashtype === "my" ? <ChartIcon /> : <MailIcon />}
       <div className="md:text-md text-sm text-gray-400 lg:text-lg">
         {dashtype === "my"
           ? "대시보드가 없습니다"
