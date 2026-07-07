@@ -41,7 +41,7 @@ export function ColumnList({ column }: { column: ColumnList }) {
       {isLoading ? (
         <div className="text-gray-400">로딩 중...</div>
       ) : cardList.length === 0 ? (
-        <NoCard />
+        <NoCard id={dashboardId} />
       ) : (
         cardList.map((colCard) => (
           <Link href={`/card/${colCard.id}`} key={colCard.id}>

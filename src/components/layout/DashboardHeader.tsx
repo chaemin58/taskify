@@ -101,24 +101,14 @@ export function DashboardHeader() {
             onClick={() => router.push(`/dashboard/${dashboardId}/edit`)}
             className="group flex items-center gap-2 text-gray-300 hover:text-white"
           >
-            <IconSettings
-              width={16}
-              height={16}
-              className="opacity-70 group-hover:opacity-100"
-              aria-label="setting"
-            />
+            <IconSettings />
             <span className="hidden text-sm font-medium md:inline">관리</span>
           </button>
           <button
             onClick={() => router.push(`/dashboard/${dashboardId}/invite`)}
             className="group flex items-center gap-2 text-gray-300 hover:text-white"
           >
-            <IconShare
-              width={16}
-              height={16}
-              className="opacity-70 group-hover:opacity-100"
-              aria-label="share"
-            />
+            <IconShare />
             <span className="hidden text-sm font-medium md:inline">공유</span>
           </button>
         </div>
