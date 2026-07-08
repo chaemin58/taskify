@@ -3,20 +3,20 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import imgSection1 from "@/assets/landing/img-section1.svg";
-import imgSection2 from "@/assets/landing/img-section2.svg";
-import imgSection3_mobile from "@/assets/landing/img-section3-mobile.svg";
-import imgSection3_tablet from "@/assets/landing/img-section3-tablet.svg";
-import imgSection3 from "@/assets/landing/img-section3.svg";
-import imgSection4_mobile_1 from "@/assets/landing/img-section4-dashboard-mobie.svg";
-import imgSection4_tablet_1 from "@/assets/landing/img-section4-dashboard-tablet.svg";
-import imgSection4_1 from "@/assets/landing/img-section4-dashboard.svg";
-import imgSection4_mobile_2 from "@/assets/landing/img-section4-invite-mobile.svg";
-import imgSection4_tablet_2 from "@/assets/landing/img-section4-invite-tablet.svg";
-import imgSection4_2 from "@/assets/landing/img-section4-invite.svg";
-import imgSection4_mobile_3 from "@/assets/landing/img-section4-member-mobile.svg";
-import imgSection4_tablet_3 from "@/assets/landing/img-section4-member-tablet.svg";
-import imgSection4_3 from "@/assets/landing/img-section4-member.svg";
+import ImgSection1 from "@/assets/landing/img-section1.svg";
+import ImgSection2 from "@/assets/landing/img-section2.svg";
+import ImgSection3_mobile from "@/assets/landing/img-section3-mobile.svg";
+import imgSection3_tablet from "@/assets/landing/img-section3-tablet.svg?url";
+import imgSection3 from "@/assets/landing/img-section3.svg?url";
+import imgSection4_mobile_1 from "@/assets/landing/img-section4-dashboard-mobie.svg?url";
+import imgSection4_tablet_1 from "@/assets/landing/img-section4-dashboard-tablet.svg?url";
+import imgSection4_mobile_2 from "@/assets/landing/img-section4-invite-mobile.svg?url";
+import imgSection4_tablet_2 from "@/assets/landing/img-section4-invite-tablet.svg?url";
+import imgSection4_2 from "@/assets/landing/img-section4-invite.svg?url";
+import imgSection4_mobile_3 from "@/assets/landing/img-section4-member-mobile.svg?url";
+import imgSection4_tablet_3 from "@/assets/landing/img-section4-member-tablet.svg?url";
+import imgSection4_3 from "@/assets/landing/img-section4-member.svg?url";
+import imgSection4_1 from "@/assets/landing/imgSection4_1.png";
 
 export function LandingContent() {
   const section3Cards = [
@@ -83,13 +83,7 @@ export function LandingContent() {
               borderBottomLeftRadius: "30px",
             }}
           >
-            <Image
-              src={imgSection1}
-              alt="Taskify 메인 대시보드"
-              fill
-              priority
-              className="object-cover object-left-top"
-            />
+            <ImgSection1 />
           </div>
         </div>
       </section>
@@ -97,12 +91,7 @@ export function LandingContent() {
       {/* Point 1 */}
       <section className="mx-auto flex max-w-[1212px] flex-col items-start gap-10 px-6 py-12 md:px-0 md:py-16 lg:flex-row lg:items-center lg:justify-between lg:py-24">
         <div className="relative h-[250px] w-full overflow-hidden md:h-[450px] lg:h-[682px] lg:w-[650px]">
-          <Image
-            src={imgSection2}
-            alt="할 일 리스트"
-            fill
-            className="object-contain p-6 md:p-10 lg:p-12"
-          />
+          <ImgSection2 className="w-184" />
         </div>
 
         <div className="mx-auto w-[315px] space-y-4 text-left md:mx-0 md:w-full md:max-w-[535px] md:pl-24 lg:mx-0 lg:w-full lg:max-w-[520px] lg:pl-0">
@@ -137,12 +126,7 @@ export function LandingContent() {
         <div className="relative order-1 flex w-full justify-center px-6 pt-10 md:pt-16 lg:order-2 lg:ml-[150px] lg:flex-1 lg:justify-start lg:px-0 lg:pt-0 lg:pr-[100px]">
           <div className="relative aspect-[315/640] w-full max-w-[315px] overflow-hidden md:aspect-[709/714] md:max-w-[709px]">
             <div className="absolute inset-x-0 bottom-0 z-20 h-32 bg-gradient-to-t from-[#161519] to-transparent lg:hidden" />
-            <Image
-              src={imgSection3_mobile}
-              alt="상세 정보"
-              fill
-              className="object-cover object-center md:hidden"
-            />
+            <ImgSection3_mobile />
             <Image
               src={imgSection3_tablet}
               alt="상세 정보"
