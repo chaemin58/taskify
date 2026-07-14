@@ -26,6 +26,7 @@ export default function ColumnAdd() {
       title: value,
       dashboardId: dashboardId,
     });
+    router.refresh();
     router.back();
   };
 

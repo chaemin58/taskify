@@ -132,12 +132,14 @@ export function LandingContent() {
               alt="상세 정보"
               fill
               className="hidden object-contain object-center md:block lg:hidden"
+              sizes="709px"
             />
             <Image
               src={imgSection3}
               alt="상세 정보"
               fill
               className="hidden object-contain object-left-top lg:block"
+              sizes="60vw"
             />
           </div>
         </div>
@@ -182,18 +184,21 @@ export function LandingContent() {
                       alt={item.title}
                       fill
                       className="object-fill md:hidden"
+                      sizes="315px"
                     />
                     <Image
                       src={item.tablet}
                       alt={item.title}
                       fill
                       className="hidden object-fill md:block lg:hidden"
+                      sizes="100vw"
                     />
                     <Image
                       src={item.pc}
                       alt={item.title}
                       fill
                       className="hidden object-fill lg:block"
+                      sizes="462px"
                     />
                   </div>
 

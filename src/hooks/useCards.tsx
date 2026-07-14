@@ -109,10 +109,13 @@ export function useMemberListQuery(dashboardId: number) {
     queryKey: memberKeys.list(dashboardId),
     queryFn: () => getMemberList({ dashboardId, size: 20 }),
     enabled: !!dashboardId,
-    staleTime: 0,
+    // 1분마다 폴링
+    staleTime: 60 * 1000,
+    refetchInterval: 60 * 1000,
+    // 탭이 백그라운드일 땐 폴링 중단
+    refetchIntervalInBackground: false,
+    // 다른 탭 갔다가 돌아오면 즉시 최신화
     refetchOnWindowFocus: true,
-    refetchOnMount: "always",
-    refetchInterval: 3000,
   });
 }
 
