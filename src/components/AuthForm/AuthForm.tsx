@@ -16,14 +16,7 @@ export function AuthForm({ type, children, ...props }: AuthFormProps) {
   return (
     <form className="flex w-full max-w-130 flex-col gap-6 md:gap-8" {...props}>
       <Link href="/">
-        <Image
-          src={Logo}
-          alt="logo"
-          width={300}
-          height={77}
-          className="mx-auto"
-          priority
-        />
+        <Logo className="w-72" />
       </Link>
 
       <div className="flex flex-col gap-y-4">{children}</div>

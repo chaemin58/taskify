@@ -8,7 +8,7 @@ import {
   getInvitationListAction,
   getMemberListAction,
 } from "@/actions/dashboard-edit";
-import icSideMenu from "@/assets/ic-sidemenu.svg";
+import SideMenuIcon from "@/assets/ic-sidemenu.svg";
 import icTrash from "@/assets/ic-trash.svg";
 import { Invitation, Member } from "@/types/api";
 
@@ -91,8 +91,11 @@ export default function Edit() {
 
       <div className="flex flex-col">
         <header className="border-black-700 flex h-18 items-center border-b-2 pl-5">
-          <button onClick={() => setIsSidebarOpen(true)} className="md:hidden">
-            <Image src={icSideMenu} alt="사이드 메뉴" height={20} width={20} />
+          <button
+            onClick={() => setIsSidebarOpen(true)}
+            className="cursor-pointer md:hidden"
+          >
+            <SideMenuIcon />
           </button>
         </header>
 
