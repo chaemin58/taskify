@@ -18,6 +18,7 @@ import type {
   UpdateCardRequest,
   CreateInvitationRequest,
   UpdateUserRequest,
+  GetCardListResponse,
 } from "@/types/api";
 
 export const cardKeys = {
@@ -41,7 +42,7 @@ export const memberKeys = {
 export function useCardListQuery(columnId: number) {
   return useQuery({
     queryKey: cardKeys.list(columnId),
-    queryFn: async () => {
+    queryFn: async (): Promise<GetCardListResponse> => {
       const res = await fetch(`/api/cards?columnId=${columnId}`);
       if (!res.ok) throw new Error("카드 조회 실패");
       return res.json();
