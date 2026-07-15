@@ -51,8 +51,8 @@ Node.js 20 이상이 필요합니다.
 ### 설치 및 실행
 
 ```bash
-git clone https://github.com/chaemin58/Taskify.git
-cd Taskify
+git clone https://github.com/chaemin58/taskify.git
+cd taskify
 npm install
 ```
 
