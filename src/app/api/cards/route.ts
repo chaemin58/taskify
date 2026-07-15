@@ -20,24 +20,27 @@ export async function GET(request: Request) {
 
   //외부 api 호출
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/cards?columnId=${columnId}&size=100`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/cards?columnId=${columnId}`,
     {
       headers: {
-        "Content-Type": "application/json",
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
       },
     }
   );
 
   if (!res.ok) {
-    const error = await res.json();
-    return Response.json(
-      { message: error.message || "카드 조회 실패" },
-      { status: res.status }
-    );
+    let message = "카드 조회 실패";
+
+    try {
+      const error = await res.json();
+      message = error.message || message;
+    } catch {
+      message =
+        res.status === 404 ? "카드를 찾을 수 없습니다" : "카드 조회 실패";
+    }
+    return Response.json({ message }, { status: res.status });
   }
 
   const data = await res.json();
   return Response.json(data);
 }
-
