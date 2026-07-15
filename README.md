@@ -8,11 +8,15 @@
 
 칸반 보드 기반의 일정 관리 · 협업 서비스입니다.
 
+**[🔗 서비스 바로가기](https://taskify-workin-taskify.vercel.app/)**
+
 </div>
 
 ## 소개
 
 Taskify는 대시보드를 만들어 팀원을 초대하고, 컬럼과 카드로 업무의 흐름을 관리하는 칸반 보드 서비스입니다. 할 일을 카드로 만들어 담당자와 마감일을 지정하고, 진행 상황에 따라 컬럼 사이로 옮기며, 카드마다 댓글로 소통할 수 있습니다.
+
+5인 팀 프로젝트([2-team-taskify](https://github.com/Useung0830/2-team-taskify))로 시작했고, 이후 [@chaemin58](https://github.com/chaemin58)이 개인적으로 이어받아 성능 개선과 구조 개편을 진행하며 배포까지 완료한 저장소입니다. 자세한 내용은 [기여자](#기여자)를 참고하세요.
 
 ## 주요 기능
 
@@ -116,22 +120,40 @@ src/
 
 로그인하지 않은 사용자는 `/`, `/login`, `/signup` 외의 경로에 접근할 수 없으며, [`src/proxy.ts`](./src/proxy.ts)에서 처리합니다.
 
-## 협업 규칙
+## 성능 개선
 
-브랜치 전략은 `main` → `develop` → `feature`로 구성됩니다.
+팀 프로젝트를 이어받은 뒤 진행한 주요 개선 작업입니다.
 
+### 대시보드 페이지 서버 컴포넌트 전환
+
+대시보드 페이지 전체가 클라이언트 컴포넌트라 초기 데이터를 브라우저에서 받아온 뒤에야 화면이 그려졌습니다. 페이지를 서버 컴포넌트로 전환하고, 상호작용이 필요한 부분만 클라이언트 컴포넌트로 분리했습니다. 초기 데이터가 서버에서 렌더링된 HTML에 담겨 내려오면서 클라이언트 번들도 함께 줄었습니다.
+
+### 카드 조회 직렬 → 병렬화
+
+카드 목록을 Server Actions로 조회하고 있었는데, Server Actions는 요청이 직렬로 처리되어 컬럼이 늘어날수록 대기 시간이 그만큼 누적됐습니다. 조회 경로를 Route Handler([`/api/cards`](./src/app/api/cards/route.ts))로 옮겨 컬럼별 요청이 병렬로 나가도록 바꿨습니다. 조회는 Route Handler로, 변경 작업은 Server Actions로 역할을 나눈 구조입니다.
+
+### 멤버 목록 폴링 비용 절감
+
+멤버 목록을 5초마다 무조건 폴링해 사용자가 보고 있지 않은 탭에서도 요청이 계속 나갔습니다. 폴링 주기를 1분으로 늘리고, `refetchIntervalInBackground: false`로 백그라운드 탭에서는 폴링을 멈추도록 했습니다. 대신 `refetchOnWindowFocus`로 탭에 돌아오는 시점에 즉시 최신화해 체감 최신성은 유지했습니다.
+
+### 정적 자산 리다이렉트 수정
+
+인증 미들웨어([`src/proxy.ts`](./src/proxy.ts))의 matcher가 `favicon.ico`만 예외 처리하고 있어, `icon.svg`와 OG 이미지 요청까지 `/login`으로 리다이렉트되고 있었습니다. 파비콘이 표시되지 않고 링크 미리보기 이미지도 깨지던 문제로, matcher에서 정적 이미지 확장자 전체를 제외하도록 수정했습니다.
+
+## 개발 규칙
+
+팀 프로젝트 시절 정한 규칙을 개인 작업에서도 그대로 따르고 있습니다.
+
+- 브랜치 전략은 `main` → `develop` → `feature`로 구성됩니다.
 - 기능 브랜치는 `develop`에서 분기하고, 작업 후 `develop`으로 Merge Commit 합니다.
 - `develop`에서 `main`으로는 Squash and Merge 합니다.
 - 커밋 메시지는 `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore` 머릿말을 사용합니다.
 - PR 제목은 `Type (Scope): Summary of changes` 형식으로 작성합니다.
-- PR은 작성자 외 3명의 승인을 받아야 머지할 수 있습니다.
 
-`main`으로 향하는 PR은 GitHub Actions에서 Lint와 Build 검사를 수행합니다.
+`main`으로 향하는 PR은 GitHub Actions에서 Lint와 Build 검사를 수행하며, Gemini 기반 AI 코드 리뷰가 함께 동작합니다.
 
-## 팀원
+## 기여자
 
-| 이름   | GitHub                                       |
-| ------ | -------------------------------------------- |
-| 성유승 | [@Useung0830](https://github.com/Useung0830) |
-| 윤수   | [@imyoonsoo](https://github.com/imyoonsoo)   |
-| 채민   | [@chaemin58](https://github.com/chaemin58)   |
+초기 기능 구현은 [@chaemin58](https://github.com/chaemin58) 외 4명이 팀 프로젝트로 함께 진행했습니다. 당시 저장소는 [Useung0830/2-team-taskify](https://github.com/Useung0830/2-team-taskify)이며, 팀원별 기여 내역은 커밋 이력에서 확인할 수 있습니다.
+
+이 저장소는 팀 프로젝트 종료 후 [@chaemin58](https://github.com/chaemin58)이 이어받아 단독으로 개발 · 운영하고 있습니다. [성능 개선](#성능-개선) 항목을 비롯한 이후의 모든 작업이 여기에 해당합니다.
