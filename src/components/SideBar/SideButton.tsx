@@ -1,7 +1,6 @@
 import { useRouter } from "next/navigation";
 
 import CrownIcon from "@/assets/crown_icon.svg";
-import Colorchip from "@/assets/dashboard/ic-colorchips.svg";
 import { DashboardTag } from "../DashboardTag/DashboardTag";
 
 interface SideButtonProps {
@@ -19,7 +18,12 @@ export function SideButton({ id, title, color, createdByMe }: SideButtonProps) {
       className="flex cursor-pointer items-center justify-between rounded-xl px-2.5 py-4 transition-colors duration-300 ease-in-out hover:bg-[#2C2B30]"
     >
       <div className="flex items-center justify-center gap-2">
-        <DashboardTag title={title} color={color} size={20} className="font-semibold"/>
+        <DashboardTag
+          title={title}
+          color={color}
+          size={20}
+          className="font-semibold"
+        />
       </div>
       {createdByMe && <CrownIcon className="fill-brand-700 h-5 w-5" />}
     </div>
