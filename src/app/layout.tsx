@@ -3,7 +3,9 @@ import { Providers } from "../providers/Queryprovider";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://taskify-workin-taskify.vercel.app/"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"
+  ),
   title: "taskify — 칸반 보드 기반 협업",
   description: "협업에 관한 모든 건 taskify로 끝내세요.",
   openGraph: {
