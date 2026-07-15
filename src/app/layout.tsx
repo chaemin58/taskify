@@ -1,6 +1,29 @@
 import "./globals.css";
 import { Providers } from "../providers/Queryprovider";
+import { Metadata } from "next";
 
+const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
+  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+  : "http://localhost:3000";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
+  title: "taskify — 칸반 보드 기반 협업",
+  description: "협업에 관한 모든 건 taskify로 끝내세요.",
+  openGraph: {
+    title: "taskify",
+    description: "협업에 관한 모든 건 taskify로 끝내세요.",
+    images: {
+      url: "/meta_data_image.png",
+      width: 1200,
+      height: 630,
+      alt: "taskify 서비스 소개 이미지",
+    },
+  },
+  icons: {
+    icon: "/logo.svg",
+  },
+};
 export default function RootLayout({
   children,
   modal,
