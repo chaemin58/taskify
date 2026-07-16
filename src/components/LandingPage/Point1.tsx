@@ -4,8 +4,17 @@ import ImgSection2 from "@/assets/landing/img-section2.svg?url";
 
 export function Point1() {
   return (
-    <section className="mx-auto flex max-w-303 flex-col items-start gap-10 px-6 py-12 md:px-0 md:py-16 lg:flex-row lg:items-center lg:justify-between lg:py-24">
-      <div className="mx-auto w-78.75 space-y-4 text-left md:mx-0 md:w-full md:max-w-133.75 md:pl-24 lg:mx-0 lg:w-full lg:max-w-130 lg:pl-0">
+    <section className="mx-auto flex max-w-fit flex-col items-start gap-10 px-6 py-12 md:px-0 md:py-16 lg:flex-row lg:items-center lg:justify-between lg:py-24">
+      <div className="relative order-2 h-62.5 w-full overflow-hidden transition-all duration-1000 md:h-112.5 lg:order-1 lg:w-100">
+        <Image
+          src={ImgSection2}
+          fill
+          alt="대시보드 상세 페이지 이미지"
+          className="object-contain object-center"
+          sizes="709px"
+        />
+      </div>
+      <div className="order-1 mx-auto w-78.75 space-y-4 text-left md:mx-0 md:w-full md:max-w-133.75 md:pl-24 lg:order-2 lg:mx-0 lg:w-full lg:max-w-130 lg:pl-0">
         <p className="text-brand-500 text-sm font-bold md:text-lg">Point 1</p>
         <h2 className="text-[24px] leading-tight font-bold md:text-[32px] lg:text-[50px]">
           내가 등록한 사진으로
@@ -16,15 +25,6 @@ export function Point1() {
           <br className="lg:hidden" />
           작업에 대한 내용을 더 직관적으로 떠올릴 수 있어요
         </p>
-      </div>
-      <div className="relative h-62.5 w-full overflow-hidden md:h-112.5 lg:h-170.5 lg:w-162.5">
-        <Image
-          src={ImgSection2}
-          fill
-          alt="대시보드 상세 페이지 이미지"
-          className="object-contain object-center"
-          sizes="709px"
-        />
       </div>
     </section>
   );

@@ -74,14 +74,14 @@ export function Point3() {
                     alt={item.title}
                     fill
                     className="object-fill md:hidden"
-                    sizes="315px"
+                    sizes="462px"
                   />
                   <Image
                     src={item.tablet}
                     alt={item.title}
                     fill
                     className="hidden object-fill md:block lg:hidden"
-                    sizes="100vw"
+                    sizes="462px"
                   />
                   <Image
                     src={item.pc}
