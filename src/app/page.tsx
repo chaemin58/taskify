@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 import { getDashboardList } from "@/api/data";
-import { LandingContent } from "@/components/LandingContent";
+import { LandingContent } from "@/components/LandingPage/LandingContent";
 import { MainFooter } from "@/components/layout/MainFooter";
 import { MainHeader } from "@/components/layout/MainHeader";
 
