@@ -49,6 +49,7 @@ export function LoginSignup() {
             fill
             alt="section1 사진"
             className="object-cover object-left"
+            sizes="100vw"
           />
         </div>
       </div>
