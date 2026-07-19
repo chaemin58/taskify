@@ -11,6 +11,7 @@ import { Dashboard } from "./SideMenu";
 const PAGE_SIZE = 20;
 
 export function SideDashboardList() {
+  //훅으로 분리
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
     useInfiniteQuery({
       queryKey: ["dashboards"],

@@ -12,7 +12,7 @@ import { AddDashboard } from "./AddDashboard";
 import { DashboardCard } from "./DashboardCard";
 import { Emptydashboard } from "./Emptydashboard";
 
-const SIZE = 10;
+const SIZE = 20;
 
 export function MyDashboard() {
   const showItem = useItemsPerPage();
@@ -20,7 +20,7 @@ export function MyDashboard() {
 
   const { data, isLoading, error, fetchNextPage, hasNextPage } =
     useInfiniteQuery({
-      queryKey: ["dashboard"],
+      queryKey: ["dashboards"],
       queryFn: ({ pageParam }) =>
         getDashboardList({
           navigationMethod: "pagination",
