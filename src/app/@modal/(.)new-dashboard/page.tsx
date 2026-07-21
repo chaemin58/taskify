@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { useCreateDashboardMutation } from "@/app/mydashboard/hooks/useDashboards";
@@ -29,6 +29,9 @@ export default function DashboardSetupModal() {
   const [selectHex, setSelectHex] = useState("");
   const [hasSelection, setHasSelection] = useState<boolean>(false);
   const router = useRouter();
+  const pathname = usePathname();
+
+  if (pathname !== "/new-dashboard") return null;
 
   const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDashboardTitle(e.target.value);
