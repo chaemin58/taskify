@@ -10,6 +10,7 @@ import {
   DashboardColorChoiceList,
 } from "@/components/DashboardColorChoiceList";
 import { Input } from "@/components/input/input";
+import { Modal } from "@/components/modal/Modal";
 import { ModalHeader } from "@/components/modal/ModalHeader";
 
 const ColorMatch = {
@@ -69,33 +70,39 @@ export default function DashboardSetupModal() {
   };
 
   return (
-    <div className="border-gray-stroke flex flex-col gap-5 rounded-3xl">
-      <ModalHeader>새 대시보드 생성</ModalHeader>
-      <form name="postNewDashboard" className="flex flex-col gap-5">
-        <Input>
-          <Input.Wrapper>
-            <Input.Field
-              placeholder="대시보드 이름을 입력해주세요."
-              value={dashboardTitle}
-              onChange={handleFieldChange}
-            />
-          </Input.Wrapper>
-          <Input.Error />
-        </Input>
-        <DashboardColorChoiceList
-          onColorChange={handleColorSelect}
-          selectedColorName={selectColor}
-          hasSelection={hasSelection}
-        />
-        <div className="flex gap-5">
-          <Button colorType="secondary" type="button" onClick={handleCancel}>
-            취소
-          </Button>
-          <Button onClick={handlePostNewDashboard} type="submit">
-            생성
-          </Button>
-        </div>
-      </form>
-    </div>
+    <Modal>
+      <div className="border-gray-stroke flex flex-col gap-5 rounded-3xl">
+        <ModalHeader>새 대시보드 생성</ModalHeader>
+        <form name="postNewDashboard" className="flex flex-col gap-5">
+          <Input>
+            <Input.Wrapper>
+              <Input.Field
+                placeholder="대시보드 이름을 입력해주세요."
+                value={dashboardTitle}
+                onChange={handleFieldChange}
+              />
+            </Input.Wrapper>
+            <Input.Error />
+          </Input>
+          <DashboardColorChoiceList
+            onColorChange={handleColorSelect}
+            selectedColorName={selectColor}
+            hasSelection={hasSelection}
+          />
+          <div className="flex gap-5">
+            <Button
+              colorType="secondary"
+              type="button"
+              onClick={handleCancel}
+            >
+              취소
+            </Button>
+            <Button onClick={handlePostNewDashboard} type="submit">
+              생성
+            </Button>
+          </div>
+        </form>
+      </div>
+    </Modal>
   );
 }
