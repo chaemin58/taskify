@@ -5,6 +5,7 @@ import { ColumnPlusButton } from "./_components/ColumnPlusButton";
 import { DesktopColumnList } from "./_components/DesktopColumnList";
 import { MoblieColumnList } from "./_components/MoblieColumnList";
 import {
+  defaultShouldDehydrateQuery,
   dehydrate,
   HydrationBoundary,
   QueryClient,
@@ -44,13 +45,20 @@ export default async function DashboardPage({
 
   const columnList = columnListResponse.data;
 
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      dehydrate: {
+        shouldDehydrateQuery: (query) =>
+          defaultShouldDehydrateQuery(query) ||
+          query.state.status === "pending",
+      },
+    },
+  });
 
-  await Promise.all(
-    columnList.map((column) =>
-      queryClient.prefetchQuery(cardListQueryOptions(column.id))
-    )
-  );
+  //카드 결과를 기다리지 않음
+  columnList.map((column) => {
+    void queryClient.prefetchQuery(cardListQueryOptions(column.id));
+  });
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
