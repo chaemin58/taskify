@@ -44,8 +44,8 @@ export function ColumnList({ column }: { column: ColumnList }) {
     if (startColumnId === id) return;
 
     //롤백 대비 스냅샷
-    const prevFrom = queryClient.getQueryData(cardKeys.list(startColumnId));
-    const prevTo = queryClient.getQueryData(cardKeys.list(id));
+    // const prevFrom = queryClient.getQueryData(cardKeys.list(startColumnId));
+    // const prevTo = queryClient.getQueryData(cardKeys.list(id));
 
     let movedCard: Card | undefined;
 
@@ -97,9 +97,34 @@ export function ColumnList({ column }: { column: ColumnList }) {
         ...(movedCard.imageUrl && { imageUrl: movedCard.imageUrl }),
       });
     } catch {
-      queryClient.setQueryData(cardKeys.list(startColumnId), prevFrom);
-      queryClient.setQueryData(cardKeys.list(id), prevTo);
+      //역연산 롤백
+      const dropColumn = queryClient.getQueryData<GetCardListResponse>(
+        cardKeys.list(id)
+      );
 
+      // 조건 확인
+      if (dropColumn?.cards.some((card) => card.id === dragCardId)) {
+        //조건에 맞으면 롤백 시작
+        queryClient.setQueryData(
+          cardKeys.list(startColumnId),
+          (old: GetCardListResponse) => ({
+            ...old,
+            cards: [...old.cards, movedCard],
+            totalCount: old.totalCount + 1,
+          })
+        );
+        queryClient.setQueryData(
+          cardKeys.list(id),
+          (old: GetCardListResponse) => ({
+            ...old,
+            cards: old.cards.filter((o) => o.id !== dragCardId),
+            totalCount: old.totalCount - 1,
+          })
+        );
+      }
+      //롤백을 하거나 하지 않거나 서버 상태와 동기화
+      queryClient.invalidateQueries({ queryKey: cardKeys.all });
+      //사용자에게 명시해야한다고 생각하기 때문에 alert 창 선택
       alert("컬럼 변경에 실패했습니다. ");
     }
   };
