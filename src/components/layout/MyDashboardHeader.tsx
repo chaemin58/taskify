@@ -1,9 +1,10 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import IcSideMenu from "@/assets/ic-sidemenu.svg";
 import LogoutIcon from "@/assets/LogoutIcon.svg";
 import { useSideMenu } from "@/contexts/SideMenuContext";
-import { useRouter } from "next/navigation";
 
 export function MyDashboardHeader() {
   const router = useRouter();

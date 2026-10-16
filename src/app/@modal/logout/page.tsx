@@ -1,8 +1,9 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import { Button } from "@/components/Button";
 import { Modal } from "@/components/modal/Modal";
-import { useRouter } from "next/navigation";
 
 export default function LogoutModal() {
   const router = useRouter();

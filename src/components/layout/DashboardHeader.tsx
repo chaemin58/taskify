@@ -4,9 +4,9 @@ import { useParams, useRouter } from "next/navigation";
 import { useMemo } from "react";
 
 import IconSettings from "@/assets/common/ic-setting.svg";
-import LogoutIcon from "@/assets/LogoutIcon.svg";
 import IconShare from "@/assets/common/ic-user-plus.svg";
 import IcSideMenu from "@/assets/ic-sidemenu.svg";
+import LogoutIcon from "@/assets/LogoutIcon.svg";
 import { useSideMenu } from "@/contexts/SideMenuContext";
 import { useMemberListQuery } from "@/hooks/useCards";
 

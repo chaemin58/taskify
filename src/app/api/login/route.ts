@@ -1,5 +1,6 @@
-import { postLogin } from "@/api/data";
 import { cookies } from "next/headers";
+
+import { postLogin } from "@/api/data";
 
 //로그인을 하기 위해서는 id,pw을 주고 토큰을 받으면 된다. -post
 export async function POST(request: Request) {
@@ -25,4 +26,3 @@ export async function POST(request: Request) {
     return Response.json({ success: false, message }, { status: 401 });
   }
 }
-

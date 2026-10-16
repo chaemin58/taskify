@@ -1,5 +1,6 @@
-import { postLogin, postSignup } from "@/api/data";
 import { cookies } from "next/headers";
+
+import { postLogin, postSignup } from "@/api/data";
 
 export async function POST(request: Request) {
   //파라미터로 넘긴 리퀘스트에서 사용자가 지정한 id, pw, nickname을 꺼내서 넘겨야 한다.
@@ -23,4 +24,3 @@ export async function POST(request: Request) {
     return Response.json({ success: false, message }, { status: 400 });
   }
 }
-

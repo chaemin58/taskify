@@ -2,18 +2,21 @@
 
 import { useState } from "react";
 
-import { ColumnPlusButton } from "./ColumnPlusButton";
-import { ColumnList } from "./ColumnList";
 import { ColumnList as Column } from "../page";
+
 import { ColumnButtonList } from "./ColumnButtonList";
+import { ColumnList } from "./ColumnList";
+import { ColumnPlusButton } from "./ColumnPlusButton";
 
 interface MoblieColumnListProps {
   columnList: Column[];
   dashboardId: number;
 }
 
-export function MoblieColumnList({ columnList, dashboardId }: MoblieColumnListProps) {
-
+export function MoblieColumnList({
+  columnList,
+  dashboardId,
+}: MoblieColumnListProps) {
   const [activeCol, setActiveCol] = useState<Column | undefined>(columnList[0]);
 
   const handleTabSwitch = (column: Column) => {
@@ -39,29 +42,4 @@ export function MoblieColumnList({ columnList, dashboardId }: MoblieColumnListPr
       )}
     </div>
   );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

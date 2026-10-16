@@ -4,12 +4,12 @@ import { useState } from "react";
 
 import { PaginationButton } from "@/components/PaginationButton";
 
+import { useGetDashboardsList } from "../hooks/useGetDashboardsList";
 import { useItemsPerPage } from "../hooks/useItemsPerPage";
 
 import { AddDashboard } from "./AddDashboard";
 import { DashboardCard } from "./DashboardCard";
 import { Emptydashboard } from "./Emptydashboard";
-import { useGetDashboardsList } from "../hooks/useGetDashboardsList";
 
 export function MyDashboard() {
   const showItem = useItemsPerPage();

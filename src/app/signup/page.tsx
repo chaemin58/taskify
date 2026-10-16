@@ -2,7 +2,6 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { signup } from "@/actions/auth";
 import { AuthForm } from "@/components/AuthForm/AuthForm";
 import { Checkbox } from "@/components/Checkbox";
 import { Dialog } from "@/components/dialog/Dialog";
