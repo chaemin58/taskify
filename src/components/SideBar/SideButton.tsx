@@ -1,6 +1,7 @@
 import { useRouter } from "next/navigation";
 
 import CrownIcon from "@/assets/crown_icon.svg";
+
 import { DashboardTag } from "../DashboardTag/DashboardTag";
 
 interface SideButtonProps {
@@ -25,9 +26,7 @@ export function SideButton({ id, title, color, createdByMe }: SideButtonProps) {
           className="font-semibold"
         />
       </div>
-      {createdByMe && (
-        <CrownIcon className="fill-brand-700 h-5 w-5 shrink-0" />
-      )}
+      {createdByMe && <CrownIcon className="fill-brand-700 h-5 w-5 shrink-0" />}
     </div>
   );
 }

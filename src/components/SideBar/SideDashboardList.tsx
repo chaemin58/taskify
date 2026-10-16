@@ -2,9 +2,10 @@
 
 import { useCallback, useRef } from "react";
 
+import { useGetDashboardsList } from "@/app/mydashboard/hooks/useGetDashboardsList";
+
 import { SideButton } from "./SideButton";
 import { Dashboard } from "./SideMenu";
-import { useGetDashboardsList } from "@/app/mydashboard/hooks/useGetDashboardsList";
 
 export function SideDashboardList() {
   const {

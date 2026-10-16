@@ -1,6 +1,7 @@
 import "./globals.css";
-import { Providers } from "../providers/Queryprovider";
 import { Metadata } from "next";
+
+import { Providers } from "../providers/Queryprovider";
 
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`

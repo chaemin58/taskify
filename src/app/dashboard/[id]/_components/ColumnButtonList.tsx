@@ -1,4 +1,5 @@
 import { Button } from "@/components/Button";
+
 import { ColumnList } from "../page";
 
 interface ColumnButtonListProps {
@@ -20,7 +21,7 @@ export function ColumnButtonList({
           size="xs"
           value={column.title}
           onClick={() => onTabSwitch(column)}
-          className={`min-h-8 cursor-pointer w-25 rounded-4xl border border-gray-600 px-4 whitespace-nowrap transition-colors ${
+          className={`min-h-8 w-25 cursor-pointer rounded-4xl border border-gray-600 px-4 whitespace-nowrap transition-colors ${
             activeCol?.id === column.id
               ? "bg-green-500 text-white"
               : "bg-gray-900"
@@ -31,10 +32,4 @@ export function ColumnButtonList({
       ))}
     </div>
   );
-
-
-
-
-
-
 }
