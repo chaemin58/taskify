@@ -38,7 +38,6 @@ export function ColumnCard({
         </div>
       )}
       <h1 className="text-[18px] font-semibold">{cardTitle}</h1>
-      {/* 기능구현할 때는 배지리스트 받아서 처리 */}
       {tags && <BadgeContainer tags={tags} />}
       {duedate && <div>{getFormatDueDateShort(duedate)}</div>}
       {creator && <ProfileWrapper name={creator} imageUrl={creatorImageUrl} />}
