@@ -5,4 +5,3 @@ export async function POST() {
   (await cookies()).delete("accessToken");
   return Response.json({ success: true });
 }
-

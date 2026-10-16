@@ -1,5 +1,6 @@
-import { getDashboardList } from "@/api/data";
 import { useInfiniteQuery } from "@tanstack/react-query";
+
+import { getDashboardList } from "@/api/data";
 
 export function useGetDashboardsList() {
   const PAGE_SIZE = 20;
@@ -34,4 +35,3 @@ export function useGetDashboardsList() {
     isLoading,
   };
 }
-

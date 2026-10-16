@@ -1,5 +1,6 @@
-import PlusBtn from "@/assets/common/ic-plus.svg";
 import Link from "next/link";
+
+import PlusBtn from "@/assets/common/ic-plus.svg";
 
 interface ColumnPlusButtonProps {
   id: number;

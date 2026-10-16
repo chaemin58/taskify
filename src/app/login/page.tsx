@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import LoginImg from "@/assets/img-login.png";
@@ -9,7 +10,6 @@ import { Dialog } from "@/components/dialog/Dialog";
 import { Input } from "@/components/input/input";
 import { Label } from "@/components/label/label";
 import { validationEmail, validationPassword } from "@/utils/authValidation";
-import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const router = useRouter();
